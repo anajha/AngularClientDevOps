@@ -1,0 +1,53 @@
+<article>
+  <aside>
+<div class="col-md-6">
+    <h2 class="text-center">Add User</h2>
+  <form>
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" [(ngModel)]="user.email" placeholder="Email" name="email" class="form-control" id="email">
+    </div>
+  
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input [(ngModel)]="user.firstName" placeholder="First Name" name="firstName" class="form-control" id="firstName">
+    </div>
+  
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+     <input [(ngModel)]="user.lastName" placeholder="Last name" name="lastName" class="form-control" id="lastName">
+    </div>
+  
+    <div class="form-group">
+        <label for="gender">Gender:</label>
+      <select [(ngModel)]="user.gender" placeholder="Gender" name=gender >
+        <option *ngFor="let gender of genders" [value]="gender.value">
+          {{ gender.viewValue }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group" *ngIf="user.gender==='male'">
+        <label for="age">Age:</label>
+       <input [(ngModel)]="user.age" placeholder="Age" name="age" class="form-control" id="age">
+      </div>
+    <button class="btn btn-success" (click)="createUser()">{{buttonName}}</button>
+  </form>
+  </div>
+</aside>
+<aside *ngIf="show">
+  <div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>LOGS</th>
+    </tr>
+  </thead>
+    <tbody>
+    <tr *ngFor="let log of logs">
+      <td>{{log.data}}</td>
+    </tr>
+    </tbody>
+  </table>
+      </div>
+    </aside>
+  </article>
